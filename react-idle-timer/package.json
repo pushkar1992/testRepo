@@ -1,38 +1,32 @@
 {
-  "_from": "react-idle-timer",
-  "_id": "react-idle-timer@4.3.4",
+  "_from": "react-idle-timer@4.0.4",
+  "_id": "react-idle-timer@4.0.4",
   "_inBundle": false,
-  "_integrity": "sha512-dbrWW1CBijrFsfg8oMnu6E5e2kF5fOY7bJFUuTQuEbZSzaxKk30Z05IH96BjbiIo1hXQwODGultsvZj92GnZ8Q==",
+  "_integrity": "sha1-gXGs/tSC19f0Bn1XW8iQwfPVCY8=",
   "_location": "/react-idle-timer",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "version",
     "registry": true,
-    "raw": "react-idle-timer",
+    "raw": "react-idle-timer@4.0.4",
     "name": "react-idle-timer",
     "escapedName": "react-idle-timer",
-    "rawSpec": "",
+    "rawSpec": "4.0.4",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "4.0.4"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/react-idle-timer/-/react-idle-timer-4.3.4.tgz",
-  "_shasum": "5f3cefdead2338ad510c151352cf81b04b6a84bd",
-  "_spec": "react-idle-timer",
+  "_resolved": "https://registry.npmjs.org/react-idle-timer/-/react-idle-timer-4.0.4.tgz",
+  "_shasum": "8171acfed482d7d7f4067d575bc890c1f3d5098f",
+  "_spec": "react-idle-timer@4.0.4",
   "_where": "D:\\ReactTestApp\\my-app",
   "author": {
     "name": "Randy Lebeau",
     "email": "randylebeau@gmail.com",
     "url": "https://github.com/supremetechnopriest"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ]
   },
   "bugs": {
     "url": "https://github.com/supremetechnopriest/react-idle-timer/issues"
@@ -41,30 +35,40 @@
   "deprecated": false,
   "description": "Activity detection for React.js",
   "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/preset-react": "^7.10.4",
-    "@rollup/plugin-node-resolve": "^8.4.0",
-    "@testing-library/react-hooks": "^3.3.0",
-    "babel-jest": "^26.1.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "jest": "^26.1.0",
-    "jest-esm-transformer": "^1.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.5",
+    "babel-jest": "^23.2.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "date-fns": "^1.29.0",
+    "docco": "^0.8.0",
+    "documentation": "^8.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^23.2.0",
     "prompt-list": "^3.2.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.21.0",
-    "rollup-plugin-terser": "^6.1.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.61.2",
+    "rollup-plugin-babel": "^3.0.5",
+    "rollup-plugin-minify-es": "^1.1.1",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.2.1",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-progress": "^0.4.0",
     "simulant": "^0.2.2",
-    "sinon": "^9.0.2",
-    "standard": "^14.3.4"
+    "sinon": "^6.0.1",
+    "standard": "^11.0.1"
   },
   "homepage": "https://github.com/supremetechnopriest/react-idle-timer#readme",
   "jest": {
     "testPathIgnorePatterns": [
-      "/examples/"
+      "/example/"
     ],
     "setupFiles": [
       "./test.setup.js"
@@ -74,14 +78,10 @@
   "keywords": [
     "react",
     "idle",
-    "idle timer",
+    "idletimer",
     "timer",
     "activity",
-    "active",
-    "timeout",
-    "session",
-    "session expiration",
-    "session timeout"
+    "active"
   ],
   "license": "MIT",
   "main": "dist/index.min.js",
@@ -97,19 +97,19 @@
     "url": "git+https://github.com/supremetechnopriest/react-idle-timer.git"
   },
   "scripts": {
-    "build": "rollup -c && cp src/index.d.ts dist/index.d.ts",
-    "clean": "rimraf dist coverage",
-    "example-component": "cd examples/component && npm start",
-    "example-hook": "cd examples/hook && npm start",
-    "example-install": "cd examples/component && npm i && cd ../hook && npm i && cd ../component-ts && npm i && cd ../hook-ts && npm i",
+    "build": "rollup -c",
+    "clean": "rimraf dist example/src/dist docs coverage",
+    "docs": "./scripts/docs",
+    "example": "./scripts/example",
     "fix": "standard --fix",
     "lint": "standard lint",
     "package": "./scripts/package",
-    "prepackage": "npm run clean && npm run test && npm run build",
-    "test": "npm run lint && jest",
+    "prepackage": "yarn clean && yarn test && yarn build && yarn docs",
+    "test": "yarn lint && jest",
     "watch": "rollup -c -w"
   },
   "standard": {
+    "parser": "babel-eslint",
     "globals": [
       "beforeEach",
       "describe",
@@ -117,6 +117,5 @@
       "expect"
     ]
   },
-  "types": "dist/index.d.ts",
-  "version": "4.3.4"
+  "version": "4.0.4"
 }
